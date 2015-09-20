@@ -682,7 +682,7 @@ angular.module('starter.controllers', ['ngStorage'])
 		console.log($scope.url[file]);
 
 		
-		window.open ($scope.url[file], '_blank', 'location=yes');
+		window.open ($scope.url[file], '_system', 'location=yes');
 		
 
 
