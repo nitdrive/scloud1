@@ -1,0 +1,15 @@
+
+<form ng-controller="ChatsCtrl">
+
+			  
+
+			   
+			    <button class="button button-block button-stable" ng-click="finishandUpdate(user)">Continue</button>
+			 
+			 
+			 
+			 
+</form>			  
+        
+      
+  

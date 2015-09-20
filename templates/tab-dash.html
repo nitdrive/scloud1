@@ -1,0 +1,54 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+     <div class="item item-text-wrap">Welcome {{ $storage.firstName }} <span style="float:right"><a ng-click="logout()" style="float:right">Logout</a></span></div>
+    <div class="list card">
+      
+      <div class="item item-divider">Progress Monitor</div>
+      <div class="item item-body">
+        
+         <p> <span style="font-weight:bold;">Application {{ count  }} % complete</span>  <div class="outer">
+              <div class="inner" ng-style="{ width: count + '%' }"></div>  
+            </div>
+	   
+	    
+        </p>
+        
+	<p> <div class="progressfieldsouter">
+	      <div class="progressfields">
+              <i class="ion-checkmark" style="border:1px solid green;padding:1px;"></i> Personal Details | <i class="ion-close" style="border:1px solid red;padding:1px;" ng-hide="contents.contact"></i><i class="ion-checkmark" style="border:1px solid green;padding:1px;" ng-show="contents.contact"></i>  Contact Details | <i class="ion-close" style="border:1px solid red;padding:1px;" ng-hide="contents.enrollment"></i><i class="ion-checkmark" style="border:1px solid green;padding:1px;" ng-show="contents.enrollment"></i>  Enrollment Details | <i class="ion-close" style="border:1px solid red;padding:1px;" ng-if="!contents.preveducation"></i><i class="ion-checkmark" style="border:1px solid green;padding:1px;" ng-if="contents.preveducation"></i>  Education Details | <i class="ion-close" style="border:1px solid red;padding:1px;" ng-if="!contents.testscores"></i><i class="ion-checkmark" style="border:1px solid green;padding:1px;" ng-if="contents.testscores"></i> Test Scores
+	      
+	      </div>
+            </div>
+        </p> 
+
+       <!--<p> <div class="progressfields"><span style="font-size:12px;">Note:</span>  <i class="ion-checkmark" style="padding:1px;border:1px solid green;"></i>  Completed  &nbsp;and&nbsp; <i class="ion-close" style="padding:1px;border:1px solid red;"></i>   Incomplete  </div></p>-->
+      
+      <button class="button button-block button-positive" ng-click="viewApplication()">
+          View Application
+        </button>	
+      </div>
+     
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Announcements</div>
+      
+       <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+    
+    </div>
+   
+    </div>
+
+    <br><br><br><br><br><br><br><span style="font-size:8px;">Designed by &copy; SofTekSystems Inc</span>
+  </ion-content>
+</ion-view>

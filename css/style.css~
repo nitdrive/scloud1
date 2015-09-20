@@ -1,0 +1,25 @@
+/* Empty. Add your own CSS if you like */
+
+.inner {
+    height: 8px;
+    background-color: #387ef5;
+}
+
+.progressfields{
+
+    
+    font-size: 11px;
+    font-weight: bold;
+
+}
+
+.progressfieldsouter{
+
+/*border: 1px solid blue;*/
+
+}
+
+.outer {
+    border: 1px solid blue;
+}
+

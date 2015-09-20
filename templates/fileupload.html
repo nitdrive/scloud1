@@ -1,0 +1,91 @@
+<ion-view view-title="File Manager">
+  <ion-content class="padding">
+   <div class="item item-text-wrap">Welcome {{ $storage.firstName }} <span style="float:right"><a ng-click="logout()" style="float:right">Logout</a></span></div>
+    <div class="list card">
+      <div class="item item-divider">Upload Transcripts</div>
+      <div class="item item-body">
+	
+	
+
+	
+
+	<label class="item item-input item-stacked-label">
+			    <span class="input-label">Select the Application Material To Upload:</span><br>
+				       <select  ng-model="user.appMaterial">
+				            <option>GRE Score Card</option>
+				            <option>TOEFL Score Card</option>
+					    <option>ILETS Score Card</option>
+					    <option>GMAT Score Card</option>
+					    <option>SAT Score Card</option>
+					    <option>ACT Score Card</option>
+					    <option>SEM1 Transcript</option>
+					    <option>SEM2 Transcript</option>
+					    <option>SEM3 Transcript</option>
+					    <option>SEM4 Transcript</option>
+					    <option>SEM5 Transcript</option>
+					    <option>SEM6 Transcript</option>
+			                    <option>SEM7 Transcript</option>
+					    <option>SEM8 Transcript</option>
+					    <option>Cumulative Marks Memo</option>
+					    <option>SOP</option>
+					    <option>Extra</option>
+				       </select>
+         </label>
+		
+	
+	 <div class="item item-body" ng-if="user.appMaterial!='none'">
+				
+	                       <label class="item item-input item-stacked-label" ng-if="user.appMaterial=='Extra'">
+				    <span class="input-label">Enter the name of file to add</span>
+				    <input type="text" placeholder="Ex: SEM2 Backlog Transcript" ng-model="user.extraname" >
+		                </label><br>
+				Upload your <span ng-if="user.appMaterial!='Extra'"><b>{{user.appMaterial }}</b></span> 
+				<span ng-if="user.appMaterial=='Extra'"><b>{{ user.extraname }}</b></span>
+			       <input type="file" id="file_input" ng-model="upload.file" onchange="angular.element(this).scope().uploadFile(this)"/>
+			       <span id="file_url"></span>
+			       <input type="hidden" id="file_fileurl" ng-model="upload.url"/>
+			       <input type="hidden" id="file_uploadedby" ng-model="upload.uploadedby"/>
+			       <input type="hidden" id="file_filetype" ng-model="upload.filetype"/><br><br>
+			       <button class="button button-positive" ng-click="showLink()">Show File Uploaded</button>
+			       <button class="button button-positive" ng-click="saveFilesToDB(upload)">Save File</button>
+			       
+				
+       
+			
+         </div>
+	
+
+      </div>
+    </div>
+     <div class="list card">
+      <div class="item item-divider">Uploaded Files</div>
+      <div class="item item-body">
+	
+	<table style="width:100%" >
+		
+	                 
+                          <tr>
+                             <th>File Name</th>
+			     <th>Status</th>
+			     <th>URL</th>
+			     
+                             <!--<th>{{ first.flags.stateChecked }}</th>-->
+                          </tr>
+			  <tr ng-repeat="file in uploadedfiles">
+			    <td>{{file | uppercase }}</td>
+			    <td><i class="ion-checkmark" style="border:1px solid green;padding:1px;"></i></td>
+			    <td><button ng-click="showFile(file)">View</button></td>
+			    
+			  </tr>
+			
+			 <tr>
+			    <td colspan="3" ng-if="uploadedfiles.length == 0"><strong>No files uploaded...</strong></td>
+			 </tr>
+
+
+
+        </table>
+      </div>
+    
+      <span style="font-size:8px;">Designed by &copy; SofTekSystems Inc</span>
+  </ion-content>

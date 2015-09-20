@@ -1,0 +1,117 @@
+<ion-view view-title="Student Advisor">
+        <ion-content class="padding">
+	
+        <div id="status-messages" ng-show="statusmessages">
+	       <div class="card" ng-hide="usernameFlag"><div class="item item-divider" style="color:green;">{{ usernameConflict }}</div></div>
+	       <div class="card" ng-show="usernameFlag"><div class="item item-divider" style="color:red;">{{ usernameConflict }}</div></div>
+	 </div>
+	<div class="card" id="app-user-register">
+	  <div class="list">
+		 <div class="item item-divider">
+   			 User Registration
+  	         </div>
+               <form name ="page1" id="page1" novalidate>
+		
+					<label class="item item-input item-stacked-label" ng-class="{ 'has-error' : page1.fname.$invalid && !page1.fname.$pristine }">
+					              <span class="input-label">First Name</span>
+			                              <input type="text" class="form-control" placeholder="John" name="fname" ng-model="user.firstName" ng-pattern="namePattern" required />
+
+	       
+					</label>
+                                       
+					<div style="border:1px solid red" class="card"  ng-show="(page1.fname.$invalid && !page1.fname.$pristine)" >
+
+				
+									
+			<span style="color:red;font-size:11px;" ng-if="page1.fname.$invalid && !page1.fname.$pristine">* Firstname should have length two and cannot be invalid or empty</span><br>
+<span style="color:red;font-size:11px;" ng-if="!page1.fname.$pristine && page1.fname.$error.pattern">* Firstname cannot contain numbers or special characters</span><br>
+
+					</div>
+		            	       
+		          
+
+			
+					  
+				  <label class="item item-input item-stacked-label">
+					    <span class="input-label">Middle Name</span>
+					    <input type="text" class="form-control" placeholder="Mac" name="mname" ng-model="user.middleName" />
+				  </label>
+
+
+				  <!--<div class="card" style="border:1px solid red" ng-show="!page1.mname.$pristine && page1.mname.$error.pattern" >
+
+				
+						
+			
+				<span style="color:red;font-size:11px;" ng-if="!page1.mname.$pristine && page1.mname.$error.pattern">* Middlename cannot contain numbers or special characters</span><br>
+
+
+					</div>-->
+					
+		            	       
+		          
+			 
+					<label class="item item-input item-stacked-label">
+					    <span class="input-label">Last Name</span>
+					    <input type="text" placeholder="Suhr" name="lname" ng-model="user.lastName"/>
+			               </label>
+
+
+					<!--<div class="card" style="border:1px solid red" ng-show="(!page1.lname.$pristine && page1.lname.$error.pattern)" >
+
+				
+						
+			
+<span style="color:red;font-size:11px;" ng-if="!page1.lname.$pristine && page1.lname.$error.pattern">* Lastname cannot contain numbers or special characters</span><br>
+
+
+					</div>-->
+					
+		            	       
+		            
+		  <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : page1.email.$invalid && !page1.email.$pristine }">
+		    <span class="input-label">Email:</span>
+		    <input type="text" placeholder="Ex: abc@xyz.com" id="email" name="email" ng-model="user.uname" ng-pattern="emailPattern" ng-blur="checkUsername(user)" required />
+		  </label>
+
+
+			<div class="card" style="border:1px solid red" ng-show="(page1.email.$invalid && !page1.email.$pristine)" >
+
+				
+									
+			<span style="color:red;font-size:11px;" ng-if="page1.email.$invalid && !page1.email.$pristine">* Please enter a valid email address</span>
+
+
+
+		       </div>
+		
+		  <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : page1.password.$invalid && !page1.password.$pristine }">
+		    <span class="input-label">Password:</span>
+		    <input type="password" placeholder="Ex: abcd123*" id="password" name="password" ng-model="user.pass" ng-pattern="passwordPattern">
+		  </label>
+		
+		   <label class="item item-input item-stacked-label" ng-class="{ 'has-error' : page1.cpassword.$invalid && !page1.cpassword.$pristine }">
+		    <span class="input-label">Retype Password:</span>
+		    <input type="password" placeholder="Ex: abcd123*" id="password" name="cpassword" ng-model="user.cpass" ng-pattern="passwordPattern">
+		  </label>
+		<div class="card" style="border:1px solid red" ng-show="(page1.password.$invalid && !page1.password.$pristine) || (page1.cpassword.$invalid && !page1.cpassword.$pristine)" >
+
+				
+					<span style="color:red;font-size:11px;" ng-if="(page1.password.$invalid && !page1.password.$pristine) || (page1.password.$error.pattern) || (page1.cpassword.$invalid && !page1.cpassword.$pristine || page1.cpassword.$error.pattern)">* Please enter a valid password of mininum length six with atleast one letter, one number and one special character</span>				
+		
+
+
+					</div>
+		<div class="item item-divider item-light">
+   			<button  type="submit" class="button button-block button-positive" ng-click="registerUser(user)" ng-disabled="page1.$invalid">Register</button>
+  	         </div>
+                </form>
+                  
+                 
+
+	  </div>
+	
+	</div>
+	 <span style="font-size:8px;">Designed by &copy; SofTekSystems Inc</span>
+ </ion-content>
+</ion-view> 
